@@ -37,12 +37,13 @@ $result = mysqli_stmt_get_result($stmt); // 쿼리 잘 실행했으면, 결과�
 $result_chk=0; // 로그인 성공여부 체크용 변수 0이면 실패, 1이면 성공이겠죠?
 if($result)// 받아와진 결과값이 무언가있다면
 {
-	while($row = mysqli_fetch_assoc($result)) // 최종 조회 결과값의 한행씩 가져와 불러올 행일 없을때 까지 반복함
-	{
+    if($row = mysqli_fetch_assoc($result))
+    // 불러올 데이터가 있다면
+    {
 		echo "id = ".$row['id']; // 로그인 성공 시 화면에 아이디 출력
 		$result_chk=1; //로그인에 성공했기떄문에 확인용 변수를 1로 변경
 	}
-	if($result_chk!=1) // 만약 확인용 변수가 1이 아니라면 즉 취약
+	else
 	{
 		echo "login failed"; // 로그인 실패를 화면에 출력
 	}
