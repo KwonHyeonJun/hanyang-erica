@@ -11,10 +11,9 @@ $db_conn = mysqli_connect("127.0.0.1", "webhacking", "webhacking", "login");
 if(!$db_conn) // 만약 db_conn 변수에 아무것도 없다면(오류가 났다면)
 {
 	echo mysqli_connect_error();
-       	// 연결시 나타나는 에러 확인
-	
+    // 연결시 나타나는 에러 확인
 	exit();
-       	// PHP 강제 종료
+    // PHP 강제 종료
 }
 
 $query = "select id from user where id='" . $id . "' and pw='" . $pw . "'";
@@ -37,16 +36,16 @@ if($result) // 결과가 있다면
 	else
 	{
 		echo "login failed";
-	       	// 로그인 실패를 화면에 출력
+	    // 로그인 실패를 화면에 출력
 	}
 
 	mysqli_free_result($result);
-       	// 지금까지 사용한 결과값을 삭제해 주는 역할
+    // 지금까지 사용한 결과값을 삭제해 주는 역할
 }
 else // 명령어 실행결과가 없을경우(필드명도 없을 경우)
 { 
 	echo "query error";
-       	// 명령문이 제대로 실행되지않았음을 화면에 출력함
+    // 명령문이 제대로 실행되지않았음을 화면에 출력함
 }
 
 mysqli_close($db_conn);
